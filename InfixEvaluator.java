@@ -19,15 +19,7 @@ public class InfixEvaluator {
                 String numStr = numBuilder.toString();
                 double num = Double.parseDouble(numStr);
                 valueStack.push(num);
-            } else if (token == '(') {
-            
-                operatorStack.push(token);
-            } else if (token == ')') {
-                
-                while (!operatorStack.isEmpty() && operatorStack.peek() != '(') {
-                    evaluateTop(valueStack, operatorStack);
-                }
-                operatorStack.pop(); 
+             
             } else if (isOperator(token)) {
                 
                 while (!operatorStack.isEmpty() && precedence(token) <= precedence(operatorStack.peek())) {
